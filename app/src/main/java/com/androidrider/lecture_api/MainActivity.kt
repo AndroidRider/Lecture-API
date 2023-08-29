@@ -81,11 +81,8 @@ class MainActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
-
                 filter(newText.orEmpty()) // Call the filter function with the search query
-
                 return true
             }
         })
