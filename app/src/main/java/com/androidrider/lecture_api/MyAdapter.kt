@@ -3,8 +3,6 @@ package com.androidrider.lecture_api
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.LayerDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import com.squareup.picasso.Picasso
 
-class MyAdapter(val context: Activity, val productArrayList: List<Product>) :
+class MyAdapter(val context: Activity, var productArrayList: List<Product>) :
 RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -92,6 +90,7 @@ RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
         }
     }
 
+    //    star icon
     companion object{
         fun updateStarIcons(starIcons: List<ImageView>, rating: Double, context:Context) {
 
@@ -113,25 +112,13 @@ RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
             }
         }
     }
-//    star icon
-//    private fun updateStarIcons(starIcons: List<ImageView>, rating: Double) {
-//
-//        val fullStarDrawable = ContextCompat.getDrawable(context, R.drawable.ic_star_filled)!!
-//        val halfStarDrawable = ContextCompat.getDrawable(context, R.drawable.ic_star_half)!!
-//        val emptyStarDrawable = ContextCompat.getDrawable(context, R.drawable.ic_star_empty)!!
-//
-//        val integerPart = rating.toInt()
-//        val decimalPart = rating - integerPart
-//
-//        for (i in 0 until 5) {
-//            if (i < integerPart) {
-//                starIcons[i].setImageDrawable(fullStarDrawable)
-//            } else if (i == integerPart && decimalPart >= 0.25) {
-//                starIcons[i].setImageDrawable(halfStarDrawable)
-//            } else {
-//                starIcons[i].setImageDrawable(emptyStarDrawable)
-//            }
-//        }
-//    }
+
+    // Add a new method to update the filtered list
+    fun filterList(filteredList: List<Product>) {
+        productArrayList= filteredList
+        notifyDataSetChanged()
+    }
+
+
 
 }
